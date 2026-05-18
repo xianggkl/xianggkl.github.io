@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xiangming Wang | Research Homepage</title>
+  <meta
+    name="description"
+    content="Xiangming Wang's homepage: education, experience, publications, technical skills, awards, and collaboration contact."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Spectral:ital,wght@0,400;0,600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #080b12;
+      --bg-soft: #0f1628;
+      --text: #e8efff;
+      --muted: #a2b0cf;
+      --card: #101a31;
+      --line: #2b3b63;
+      --primary: #7aa9ff;
+      --accent: #7eeed3;
+      --highlight: #be9bff;
+      --shadow: 0 16px 36px rgba(4, 8, 19, 0.45);
+      --max-width: 1120px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    body.light {
+      --bg: #f3f6ff;
+      --bg-soft: #ffffff;
+      --text: #0f1b36;
+      --muted: #4d5f88;
+      --card: #ffffff;
+      --line: #d5def3;
+      --primary: #326bf2;
+      --accent: #0db89d;
+      --highlight: #8055e5;
+      --shadow: 0 12px 28px rgba(19, 39, 90, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(850px 520px at 8% -10%, rgba(122, 169, 255, 0.2), transparent 60%),
+        radial-gradient(900px 600px at 98% 8%, rgba(126, 238, 211, 0.13), transparent 55%),
+        var(--bg);
+      line-height: 1.65;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--max-width), 92vw);
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--bg) 78%, transparent);
+      border-bottom: 1px solid color-mix(in oklab, var(--line) 80%, transparent);
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+    }
+
+    .logo {
+      font-size: 0.94rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .nav-links a,
+    .theme-toggle {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 7px 11px;
+      color: var(--muted);
+      font-size: 0.83rem;
+      font-weight: 600;
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .theme-toggle:hover {
+      color: var(--text);
+      border-color: var(--line);
+      background: color-mix(in oklab, var(--card) 84%, transparent);
+    }
+
+    .hero {
+      padding: 82px 0 46px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 20px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .block {
+      background: linear-gradient(170deg, var(--card), color-mix(in oklab, var(--card) 88%, var(--bg-soft)));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main,
+    .hero-side {
+      padding: 28px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 7px 12px;
+      margin-bottom: 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: color-mix(in oklab, var(--primary) 70%, var(--text));
+      border: 1px solid color-mix(in oklab, var(--primary) 50%, var(--line));
+      background: color-mix(in oklab, var(--primary) 16%, transparent);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    h1 span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-family: "Spectral", serif;
+      font-size: 1.06rem;
+      margin-bottom: 12px;
+      color: color-mix(in oklab, var(--text) 84%, var(--muted));
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      max-width: 65ch;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 11px;
+      font-size: 0.88rem;
+font-weight: 700;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.04);
+    }
+
+    .btn-primary {
+      color: #061223;
+      background: linear-gradient(135deg, var(--primary), var(--highlight));
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: var(--line);
+      background: color-mix(in oklab, var(--bg-soft) 80%, transparent);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .fact {
+      border: 1px solid color-mix(in oklab, var(--line) 82%, transparent);
+      border-radius: var(--radius-md);
+      padding: 13px;
+      background: color-mix(in oklab, var(--bg-soft) 72%, transparent);
+    }
+
+    .fact .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .fact .value {
+      font-size: 0.94rem;
+    }
+
+    main section {
+      margin-bottom: 18px;
+    }
+
+    .block {
+      padding: 25px;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      border-bottom: 1px solid color-mix(in oklab, var(--line) 80%, transparent);
+      padding-bottom: 11px;
+      margin-bottom: 15px;
+    }
+
+    .title h2 {
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+    }
+
+    .title span {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .topics {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .topic-card {
+      border: 1px solid color-mix(in oklab, var(--line) 80%, transparent);
+      border-radius: var(--radius-md);
+      background: color-mix(in oklab, var(--bg-soft) 80%, transparent);
+      padding: 14px;
+    }
+
+    .topic-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+
+    .topic-card p {
+      color: var(--muted);
+      font-size: 0.89rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 8px;
+      width: 2px;
+      opacity: 0.72;
+      background: linear-gradient(var(--primary), var(--accent));
+    }
+
+    .item {
+      margin-left: 26px;
+      border: 1px solid color-mix(in oklab, var(--line) 82%, transparent);
+      border-radius: var(--radius-md);
+      padding: 12px 13px;
+      background: color-mix(in oklab, var(--bg-soft) 80%, transparent);
+      position: relative;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    .item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .item::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid color-mix(in oklab, var(--card) 70%, var(--text));
+      position: absolute;
+      left: -24px;
+      top: 14px;
+    }
+
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 5px;
+      font-size: 0.91rem;
+      font-weight: 600;
+    }
+
+    .item p {
+      color: var(--muted);
+      font-size: 0.89rem;
+    }
+
+    .sub-bullets {
+      margin-top: 6px;
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: 0.89rem;
+    }
+
+    .sub-bullets li + li {
+      margin-top: 4px;
+    }
+
+    .skills-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .skill-group {
+      border: 1px solid color-mix(in oklab, var(--line) 80%, transparent);
+      border-radius: var(--radius-md);
+      background: color-mix(in oklab, var(--bg-soft) 80%, transparent);
+      padding: 14px;
+    }
+
+    .skill-group h3 {
+      margin-bottom: 6px;
+      font-size: 0.94rem;
+      color: color-mix(in oklab, var(--text) 90%, var(--primary));
+    }
+
+    .skill-group p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .pub-list,
+    .award-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+}
+
+    .pub,
+    .award {
+      border: 1px solid color-mix(in oklab, var(--line) 80%, transparent);
+      border-radius: var(--radius-md);
+      background: color-mix(in oklab, var(--bg-soft) 80%, transparent);
+      padding: 13px;
+    }
+
+    .pub-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .pub-authors,
+    .pub-venue,
+    .pub-note {
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .pub-note {
+      margin-top: 4px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .chip {
+      border: 1px solid color-mix(in oklab, var(--line) 80%, transparent);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.77rem;
+      color: color-mix(in oklab, var(--text) 75%, var(--muted));
+      transition: 0.2s ease;
+    }
+
+    .chip:hover {
+      border-color: var(--primary);
+      color: var(--text);
+    }
+
+    .award {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.89rem;
+    }
+
+    .award::before {
+      content: "◆";
+      color: var(--accent);
+      margin-top: 0.01rem;
+    }
+
+    .contact-box {
+      border: 1px dashed color-mix(in oklab, var(--line) 84%, transparent);
+      border-radius: var(--radius-md);
+      background: color-mix(in oklab, var(--bg-soft) 75%, transparent);
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.84rem;
+      padding: 6px 0 30px;
+    }
+
+    .to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: color-mix(in oklab, var(--card) 85%, transparent);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: 0.2s ease;
+      font-size: 1.06rem;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 56px;
+      }
+
+      .topics,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        align-items: flex-start;
+      }
+
+      .hero-main,
+      .hero-side,
+      .block {
+        padding: 21px;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="light">
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href=" ">Xiangming Wang</a >
+      <nav class="nav-links" aria-label="Primary">
+        About
+        Research
+        Education
+        Experience
+        Skills
+        Publications
+        Awards
+        Contact
+        <button class="theme-toggle" id="themeToggle" type="button">Toggle Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <article class="hero-main">
+        <p class="tag">Multimodal AI + Imaging Collaboration</p >
+        <h1><span>Xiangming Wang</span> builds multimodal models for robust visual understanding and restoration.</h1>
+        <p class="hero-sub">Ph.D. candidate at HIT Shenzhen, focusing on vision-language modeling, multi-sensor fusion, and optimization-driven learning.</p >
+        <p class="hero-desc">
+          My work connects multimodal representation learning with practical deployment, from vision-language guided
+          restoration to multi-sensor RAW imaging pipelines. I focus on methods that are structurally faithful,
+          degradation-aware, and efficient enough for real-world devices.
+        </p >
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Start Collaboration</a >
+          <a class="btn btn-secondary" href="./Resume.pdf" target="_blank" rel="noopener noreferrer">Download CV</a >
+        </div>
+      </article>
+
+      <aside class="hero-side">
+<article class="fact">
+          <p class="label">Current Role</p >
+          <p class="value">Ph.D. Candidate, HIT Shenzhen (Expected 2029)</p >
+        </article>
+        <article class="fact">
+          <p class="label">Research Internship</p >
+          <p class="value">Algorithm Intern, Y-Lab, OPPO Research Institute</p >
+        </article>
+        <article class="fact">
+          <p class="label">Profiles</p >
+          <p class="value">xianggkl.github.io · </p >
+        </article>
+        <article class="fact">
+          <p class="label">Email</p >
+          <p class="value"></p >
+        </article>
+      </aside>
+    </section>
+
+    <main>
+      <section id="about" class="block">
+        <div class="title">
+          <h2>About</h2>
+          <span>Profile</span>
+        </div>
+        <p>
+          I am from the Department of Computer Science at Harbin Institute of Technology (Shenzhen). My recent research
+          increasingly centers on multimodal modeling for image restoration, including vision-language guidance and
+          multi-sensor fusion. I build optimization-aware methods that preserve structure under complex degradations
+          while remaining practical for deployment.
+        </p >
+      </section>
+
+      <section id="research" class="block">
+        <div class="title">
+          <h2>Research Focus</h2>
+          <span>Topics</span>
+        </div>
+        <div class="topics">
+          <article class="topic-card">
+            <h3>Vision-Language Restoration</h3>
+            <p>Vision-language guided deep unfolding and generative restoration for degradation-aware recovery.</p >
+          </article>
+          <article class="topic-card">
+            <h3>Multimodal Sensing</h3>
+            <p>Multi-sensor RAW and hyperspectral reconstruction with cross-modal consistency constraints.</p >
+          </article>
+          <article class="topic-card">
+            <h3>Generative + Optimization</h3>
+            <p>Autoregressive/diffusion modeling integrated with convex and non-convex optimization principles.</p >
+          </article>
+        </div>
+      </section>
+
+      <section id="education" class="block">
+        <div class="title">
+          <h2>Education</h2>
+          <span>Timeline</span>
+        </div>
+        <div class="timeline" data-animate>
+          <article class="item">
+            <div class="item-head">
+              <strong>Ph.D. Candidate in Computer Science, HIT Shenzhen</strong>
+              <span>Sep 2024 - Present</span>
+            </div>
+            <p>Expected 2029 · GPA: 89.942/100 · Rank: 4%.</p >
+          </article>
+          <article class="item">
+            <div class="item-head">
+              <strong>B.Eng in Computer Science, HIT Shenzhen</strong>
+              <span>Sep 2020 - Jun 2024</span>
+            </div>
+            <p>GPA: 89.576/100 · Rank: 19%.</p >
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="block">
+        <div class="title">
+          <h2>Experience</h2>
+          <span>Timeline</span>
+        </div>
+        <div class="timeline" data-animate>
+          <article class="item">
+            <div class="item-head">
+              <strong>Algorithm Intern, Y-Lab, OPPO Research Institute</strong>
+              <span>Sep 2025 - Present</span>
+            </div>
+            <p>Unified Denoising & Demosaicing for Mobile Imaging Pipeline with multimodal sensor adaptation.</p >
+            <ul class="sub-bullets">
+              <li>Designed a joint optimization framework for RAW-domain denoising and demosaicing in mobile ISP pipelines.</li>
+              <li>Investigated adaptation strategies for heterogeneous multi-sensor data to enable robust multimodal fusion.</li>
+              <li>Prototyped lightweight deployment methods for multimodal inference under strict on-device latency constraints.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="block">
+        <div class="title">
+          <h2>Technical Skills</h2>
+          <span>Stack</span>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-group">
+            <h3>Modeling</h3>
+            <p>Vision-language modeling, deep unfolding, diffusion/autoregressive generative models, multimodal fusion.</p >
+          </article>
+          <article class="skill-group">
+            <h3>Data</h3>
+            <p>Synthetic data generation, degradation modeling, cross-modal alignment, spatiotemporal consistency metrics.</p >
+          </article>
+          <article class="skill-group">
+            <h3>Engineering</h3>
+<p>PyTorch, mobile ISP pipeline development, multimodal training pipelines, CUDA acceleration basics.</p >
+          </article>
+        </div>
+      </section>
+
+      <section id="publications" class="block">
+        <div class="title">
+          <h2>Publications</h2>
+          <span>Selected</span>
+        </div>
+        <ul class="pub-list">
+          <li class="pub">
+            <p class="pub-title">Vision-Language Gradient Descent-driven All-in-One Deep Unfolding Networks</p >
+            <p class="pub-authors">Haijin Zeng*, Xiangming Wang* (Co-first author), Yongyong Chen, Jingyong Su, Jie Liu</p >
+            <p class="pub-venue">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025</p >
+            <p class="pub-note">Key contribution: Vision-language guidance for degradation-aware restoration with preserved structural fidelity.</p >
+          </li>
+          <li class="pub">
+            <p class="pub-title">Deep LoRA-Unfolding Networks for Image Restoration</p >
+            <p class="pub-authors">Xiangming Wang, Haijin Zeng, Benteng Sun, Jiezhang Cao, Kai Zhang, Qiangqiang Shen, Yongyong Chen</p >
+            <p class="pub-venue">IEEE Transactions on Image Processing, 2026</p >
+          </li>
+          <li class="pub">
+            <p class="pub-title">OTLRM: Orthogonal Learning-based Low-Rank Metric for Multi-Dimensional Inverse Problems</p >
+            <p class="pub-authors">Xiangming Wang, Haijin Zeng, Jiaoyang Chen, Sheng Liu, Yongyong Chen, Guoqing Chao</p >
+            <p class="pub-venue">Proceedings of the AAAI Conference on Artificial Intelligence, 2025</p >
+          </li>
+          <li class="pub">
+            <p class="pub-title">HSI-VAR: Rethinking Hyperspectral Restoration through Spatial-Spectral Visual Autoregression</p >
+            <p class="pub-authors">Xiangming Wang, Benteng Sun, Yungeng Liu, Haijin Zeng, Yongyong Chen, Jingyong Su, Jie Liu</p >
+            <p class="pub-venue">Under Review</p >
+            <p class="pub-note">Key contribution: Cross-dimensional autoregressive modeling for spatiotemporal-consistent hyperspectral restoration.</p >
+          </li>
+          <li class="pub">
+            <p class="pub-title">NTIRE 2025 the 2nd Restore Any Image Model (RAIM) in the Wild Challenge [Third Prize]</p >
+            <p class="pub-authors">Jie Liang, Radu Timofte, et al. (Xiangming Wang)</p >
+            <p class="pub-venue">CVPR Workshops, 2025</p >
+          </li>
+          <li class="pub">
+            <p class="pub-title">MIPI 2025 Challenge on Deblurring for Hybrid EVS Camera: Methods and Results</p >
+            <p class="pub-authors">Yaqi Wu, Zhihao Fan, Hirotaka Shinozaki, et al. (Xiangming Wang)</p >
+            <p class="pub-venue">ICCV Workshops, 2025</p >
+          </li>
+        </ul>
+      </section>
+
+      <section id="awards" class="block">
+        <div class="title">
+          <h2>Awards</h2>
+          <span>Honors</span>
+        </div>
+        <ul class="award-list">
+          <li class="award">National First Prize & Champion of the Challenge Award, National College Student IoT Design Competition.</li>
+          <li class="award">Sheng Li Scholarship, Harbin Institute of Technology, top 10 students of the university, 10000 RMB.</li>
+          <li class="award">Tat-Seng Chua Scholarship, Harbin Institute of Technology, top 14 students of the university, 25000 RMB.</li>
+          <li class="award">Academic Scholarship, Harbin Institute of Technology, top 5% students of the university, 22000 RMB.</li>
+        </ul>
+      </section>
+
+      <section id="contact" class="block">
+        <div class="title">
+          <h2>Contact & Collaboration</h2>
+          <span>Open to Collaboration</span>
+        </div>
+        <div class="contact-box">
+          <p>
+            I am open to collaboration on multimodal models, vision-language restoration, and practical AI deployment.
+            Reach me at <strong>xmwang28@gmail.com</strong>.
+          </p >
+          <div class="chips">
+            <a class="chip" href=" " target="_blank" rel="noopener noreferrer">Google Scholar</a >
+            <a class="chip" href="https://github.com/xianggkl" target="_blank" rel="noopener noreferrer">GitHub</a >
+            <a class="chip" href="./Resume.pdf" target="_blank" rel="noopener noreferrer">Resume PDF</a >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Designed for GitHub Pages · Last updated 2026</p >
+    </footer>
+  </div>
+<button id="toTopBtn" class="to-top" aria-label="Back to top">↑</button>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const themeToggle = document.getElementById("themeToggle");
+      const toTopBtn = document.getElementById("toTopBtn");
+      const timelineItems = document.querySelectorAll("[data-animate] .item");
+
+      const savedTheme = localStorage.getItem("theme-mode");
+      if (savedTheme === "dark") {
+        body.classList.remove("light");
+      } else {
+        body.classList.add("light");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("light");
+        localStorage.setItem("theme-mode", body.classList.contains("light") ? "light" : "dark");
+      });
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          toTopBtn.classList.add("show");
+        } else {
+          toTopBtn.classList.remove("show");
+        }
+      });
+
+      toTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16 }
+      );
+
+      timelineItems.forEach((item) => observer.observe(item));
+    })();
+  </script>
+</body>
+</html>
